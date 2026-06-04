@@ -1,0 +1,12 @@
+---
+description: internachi/modular conventions when working in app-modules
+globs: app-modules/**/*
+alwaysApply: false
+---
+
+# Modular (internachi/modular)
+
+- This is a modular application. Each module lives in its own directory under `app-modules/`.
+- Read and follow `.cursor/skills/modular/SKILL.md` before creating or changing module code.
+- Use `php artisan make:* --module={module}` for module components.
+- Run `php artisan modules:sync` after adding modules or changing module structure.

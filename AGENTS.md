@@ -26,6 +26,15 @@ This application is a Laravel application and its main Laravel ecosystems packag
 This project has domain-specific skills available. You MUST activate the relevant skill whenever you work in that domain—don't wait until you're stuck.
 
 - `laravel-best-practices` — Apply this skill whenever writing, reviewing, or refactoring Laravel PHP code. This includes creating or modifying controllers, models, migrations, form requests, policies, jobs, scheduled commands, service classes, and Eloquent queries. Triggers for N+1 and query performance issues, caching strategies, authorization and security patterns, validation, error handling, queue and job configuration, route definitions, and architectural decisions. Also use for Laravel code reviews and refactoring existing Laravel code to follow best practices. Covers any task involving Laravel backend PHP code patterns.
+- `modular` — Activate when creating or modifying Laravel modules with `internachi/modular`, scaffolding module structure, or working in `app-modules/`. Covers `make:module`, `--module` Artisan flags, module routes, migrations, factories, tests, and cross-module dependencies.
+
+=== internachi/modular rules ===
+
+## Modular
+
+- This is a modular application. Each module is located in its own directory inside `app-modules/`.
+- IMPORTANT: Activate the `modular` skill every time you are working with or creating a module.
+- Use `php artisan make:* --module={module}` for module components; run `php artisan modules:sync` after structural changes.
 
 ## Conventions
 
@@ -39,6 +48,7 @@ This project has domain-specific skills available. You MUST activate the relevan
 
 ## Application Structure & Architecture
 
+- Domain code belongs in `app-modules/{module-name}/` (see Modular rules above); do not add parallel `app/` trees for module features.
 - Stick to existing directory structure; don't create new base folders without approval.
 - Do not change the application's dependencies without approval.
 
