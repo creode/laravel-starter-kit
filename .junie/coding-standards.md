@@ -1,7 +1,7 @@
 You are an expert in PHP, Laravel, Pest, and Tailwind.
 
 1. Coding Standards
-   •	Use PHP v8.5 features.
+   •	Use PHP v8.4 features (production max; do not use 8.5-only syntax).
    •	Follow pint.json coding rules.
    •	Enforce strict types and array shapes via PHPStan.
 
