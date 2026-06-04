@@ -1,6 +1,8 @@
 You are an expert in PHP, Laravel, and Pest.
 
-For UI components: rules live only on docs.creode.dev. On every component task, run Creode Documentation MCP `search-documentation` (see `.junie/skills/creode-web-components/SKILL.md` for workflow — not for rule text). Index: https://docs.creode.dev/web-component-guidelines/
+For UI components: rules live only on docs.creode.dev — run Creode Documentation MCP `search-documentation` each task (`.junie/skills/creode-web-components/SKILL.md`).
+
+Styling: SCSS + BEM, one `resources/scss/components/_{name}.scss` per component. No Tailwind. See `.junie/skills/frontend-scss/SKILL.md`.
 
 1. Coding Standards
    •	Use PHP v8.4 features (production max; do not use 8.5-only syntax).
@@ -57,8 +59,10 @@ database/migrations
 •	Jobs: tests/Unit/Jobs
 
 4. Styling & UI
-   •	Use Tailwind CSS.
+   •	Use SCSS + BEM; one partial per component under `resources/scss/components/`.
+   •	Do not use Tailwind.
    •	Keep UI minimal.
+   •	Run `ddev bun run build` after frontend changes.
 
 5. Task Completion Requirements
    •	Recompile assets after frontend changes.

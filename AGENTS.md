@@ -20,6 +20,7 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - pestphp/pest (PEST) - v4
 - phpunit/phpunit (PHPUNIT) - v12
 - rector/rector (RECTOR) - v2
+- sass (SASS) - compiled via Vite
 
 - **PHP runtime:** Target **8.4** everywhere (DDEV, Composer, production). Hosting does not support 8.5 yet — do not adopt 8.5-only language features or raise the minimum above 8.4.
 
@@ -30,6 +31,16 @@ This project has domain-specific skills available. You MUST activate the relevan
 - `laravel-best-practices` — Apply this skill whenever writing, reviewing, or refactoring Laravel PHP code. This includes creating or modifying controllers, models, migrations, form requests, policies, jobs, scheduled commands, service classes, and Eloquent queries. Triggers for N+1 and query performance issues, caching strategies, authorization and security patterns, validation, error handling, queue and job configuration, route definitions, and architectural decisions. Also use for Laravel code reviews and refactoring existing Laravel code to follow best practices. Covers any task involving Laravel backend PHP code patterns.
 - `modular` — Activate when creating or modifying Laravel modules with `internachi/modular`, scaffolding module structure, or working in `app-modules/`. Covers `make:module`, `--module` Artisan flags, module routes, migrations, factories, tests, and cross-module dependencies.
 - `creode-web-components` — Activate when building or reviewing adaptable UI components (Blade, CSS/SCSS, component JS). Workflow only: query live docs via MCP each time (see rules below).
+- `frontend-scss` — Activate when writing or changing frontend styles or component markup. SCSS + BEM, one partial per component, no Tailwind (see rules below).
+
+=== frontend styling rules ===
+
+## SCSS & BEM (no Tailwind)
+
+- Styles are compiled with **SCSS** through Vite (`resources/scss/app.scss`). Use **`ddev bun run dev`** / **`ddev bun run build`**.
+- **Do not use Tailwind** or other utility-first CSS frameworks in this project.
+- Each UI component gets **BEM** classes in Blade and a dedicated partial: `resources/scss/components/_{block-name}.scss`, registered in `app.scss` via `@use`.
+- Component compatibility and naming discipline: query **Creode Documentation MCP** per `creode-web-components` — do not duplicate those guidelines in the repo.
 
 === creode web component rules ===
 

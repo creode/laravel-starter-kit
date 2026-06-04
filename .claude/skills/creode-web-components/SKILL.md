@@ -24,3 +24,7 @@ description: Build or review adaptable UI components using Creode Web Component 
 ## Index (navigation only — still query MCP for rules)
 
 [Web Component Guidelines](https://docs.creode.dev/web-component-guidelines/)
+
+## This repo
+
+SCSS + BEM file layout and Vite setup: activate **`frontend-scss`** (not duplicated here).

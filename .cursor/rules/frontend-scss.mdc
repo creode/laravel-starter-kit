@@ -1,0 +1,13 @@
+---
+description: SCSS + BEM per component; no Tailwind
+globs: resources/**/*.{blade.php,scss,css,js},app-modules/**/resources/**/*
+alwaysApply: false
+---
+
+# Frontend styling (this project)
+
+- **SCSS** via Vite — entry `resources/scss/app.scss`. Run builds with **`ddev bun`**.
+- **No Tailwind** — do not add `tailwindcss`, `@tailwindcss/vite`, or utility-class styling.
+- **BEM** class names in markup; **one** `resources/scss/components/_{block}.scss` partial per component.
+- Creode adaptability rules: query **Creode Documentation MCP** (`creode-web-components` skill) — do not duplicate those docs here.
+- Follow `.cursor/skills/frontend-scss/SKILL.md` for repo structure.
