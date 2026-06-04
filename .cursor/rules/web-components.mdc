@@ -1,0 +1,11 @@
+---
+description: Creode web components — live docs via MCP only
+globs: resources/**/*.{blade.php,css,scss,js},app-modules/**/resources/**/*
+alwaysApply: false
+---
+
+# Creode Web Components
+
+Guidelines live on [docs.creode.dev](https://docs.creode.dev/web-component-guidelines/) — **not** in this repo.
+
+Before UI component work: run **`search-documentation`** on **`user-creode-documentation`**. Follow `.cursor/skills/creode-web-components/SKILL.md` (workflow only). Do not rely on duplicated rules in agent files or memory.

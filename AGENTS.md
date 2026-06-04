@@ -29,6 +29,15 @@ This project has domain-specific skills available. You MUST activate the relevan
 
 - `laravel-best-practices` — Apply this skill whenever writing, reviewing, or refactoring Laravel PHP code. This includes creating or modifying controllers, models, migrations, form requests, policies, jobs, scheduled commands, service classes, and Eloquent queries. Triggers for N+1 and query performance issues, caching strategies, authorization and security patterns, validation, error handling, queue and job configuration, route definitions, and architectural decisions. Also use for Laravel code reviews and refactoring existing Laravel code to follow best practices. Covers any task involving Laravel backend PHP code patterns.
 - `modular` — Activate when creating or modifying Laravel modules with `internachi/modular`, scaffolding module structure, or working in `app-modules/`. Covers `make:module`, `--module` Artisan flags, module routes, migrations, factories, tests, and cross-module dependencies.
+- `creode-web-components` — Activate when building or reviewing adaptable UI components (Blade, CSS/SCSS, component JS). Workflow only: query live docs via MCP each time (see rules below).
+
+=== creode web component rules ===
+
+## Adaptable Web Components (Creode)
+
+- **Single source of truth:** [Web Component Guidelines](https://docs.creode.dev/web-component-guidelines/) on docs.creode.dev — via **Creode Documentation MCP** only. Do not duplicate guideline content in this repo or rely on cached summaries.
+- **IMPORTANT:** On every component build or review, activate `creode-web-components` and run **`search-documentation`** (`user-creode-documentation`) with fresh queries before changing markup, CSS, or JS. Guidelines change; query again each task.
+- Cite canonical `https://docs.creode.dev/...` URLs from MCP results. Use **`report-documentation-gap`** when docs are missing (with the user's identity as `submitted_by`).
 
 === internachi/modular rules ===
 
@@ -92,6 +101,7 @@ This project uses DDEV (`.ddev/`). PHP, database, and Node/bun run inside the we
 - Use `database-schema` to inspect table structure before writing migrations or models.
 - Use `get-absolute-url` to resolve the correct scheme, domain, and port for project URLs. Always use this before sharing a URL with the user.
 - Use `browser-logs` to read browser logs, errors, and exceptions. Only recent logs are useful, ignore old entries.
+- **Creode Documentation** (`user-creode-documentation`): For UI components, always `search-documentation` first; treat MCP output as the only authoritative rules (see `creode-web-components` skill). Pass canonical `https://docs.creode.dev/...` links when citing results.
 
 ## Searching Documentation (IMPORTANT)
 

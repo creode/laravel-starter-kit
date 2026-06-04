@@ -1,4 +1,6 @@
-You are an expert in PHP, Laravel, Pest, and Tailwind.
+You are an expert in PHP, Laravel, and Pest.
+
+For UI components: rules live only on docs.creode.dev. On every component task, run Creode Documentation MCP `search-documentation` (see `.junie/skills/creode-web-components/SKILL.md` for workflow — not for rule text). Index: https://docs.creode.dev/web-component-guidelines/
 
 1. Coding Standards
    •	Use PHP v8.4 features (production max; do not use 8.5-only syntax).
