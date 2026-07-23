@@ -1,5 +1,16 @@
 import laravel from 'laravel-vite-plugin';
-import {defineConfig} from 'vite-plus';
+import { defineConfig } from 'vite-plus';
+
+const ddevHostname =
+    process.env.DDEV_HOSTNAME?.split(',')[0] ??
+    'laravel-starter-kit.ddev.site';
+
+let primaryUrl = process.env.DDEV_PRIMARY_URL;
+if (primaryUrl) {
+    primaryUrl = primaryUrl.replace(/:\d+$/, '') + ':5173';
+} else {
+    primaryUrl = `https://${ddevHostname}:5173`;
+}
 
 export default defineConfig({
     fmt: {
@@ -17,7 +28,14 @@ export default defineConfig({
             },
         ],
         sortImports: {
-            groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+            groups: [
+                'builtin',
+                'external',
+                'internal',
+                'parent',
+                'sibling',
+                'index',
+            ],
             newlinesBetween: false,
         },
         ignorePatterns: ['resources/views/mail/*'],
@@ -28,4 +46,17 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+        host: true,
+        strictPort: true,
+        port: 5173,
+        origin: primaryUrl,
+        cors: {
+            origin: /https?:\/\/([A-Za-z0-9\-\.]+)?(\.ddev\.site)(?::\d+)?$/,
+        },
+        hmr: {
+            protocol: 'wss',
+            host: ddevHostname,
+        },
+    },
 });

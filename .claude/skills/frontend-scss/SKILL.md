@@ -30,7 +30,7 @@ resources/views/
 3. Create `resources/scss/components/_product-teasers.scss` (leading underscore partial; block name matches file).
 4. Add `@use 'components/product-teasers';` to `resources/scss/app.scss`.
 5. Do **not** add Tailwind classes. Do **not** put component rules in unrelated partials.
-6. Run `ddev bun run dev` or `ddev bun run build` to compile.
+6. Run `ddev npm run dev` or `ddev npm run build` to compile.
 
 ## Blade components
 
@@ -45,7 +45,7 @@ resources/views/
 ## Commands (DDEV)
 
 ```bash
-ddev bun install
-ddev bun run dev
-ddev bun run build
+ddev npm install
+ddev npm run dev
+ddev npm run build
 ```

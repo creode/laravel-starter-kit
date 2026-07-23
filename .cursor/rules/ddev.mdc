@@ -7,9 +7,9 @@ alwaysApply: true
 
 This project uses DDEV (`.ddev/`). The app runs in Docker; the project root in the container is `/var/www/html`.
 
-- **Never** run PHP, Composer, Artisan, Pest, Pint, Rector, PHPStan, or Node/bun/npm **on the host** for this project.
-- **Always** use DDEV: `ddev composer …`, `ddev artisan …`, `ddev exec vendor/bin/pest …`, `ddev bun …` (or `ddev exec npm …`).
+- **Never** run PHP, Composer, Artisan, Pest, Pint, Rector, PHPStan, or Node/npm **on the host** for this project.
+- **Always** use DDEV: `ddev composer …`, `ddev artisan …`, `ddev exec vendor/bin/pest …`, `ddev npm …`.
 - Run `ddev start` first if the environment is not up.
 - Prefer `ddev artisan` over bare `php artisan`; prefer `ddev composer` over bare `composer`.
-- Frontend builds and installs: `ddev bun install`, `ddev bun run build`, `ddev bun run dev` — not host `bun`/`npm`.
+- Frontend builds and installs: `ddev npm install`, `ddev npm run build`, `ddev npm run dev` — not host `npm`.
 - Host paths and container paths for project files align via bind mounts; use `storage/logs/laravel.log` for Laravel logging.

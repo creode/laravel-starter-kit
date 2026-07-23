@@ -62,7 +62,7 @@ database/migrations
    •	Use SCSS + BEM; one partial per component under `resources/scss/components/`.
    •	Do not use Tailwind.
    •	Keep UI minimal.
-   •	Run `ddev bun run build` after frontend changes.
+   •	Run `ddev npm run build` after frontend changes.
 
 5. Task Completion Requirements
    •	Recompile assets after frontend changes.

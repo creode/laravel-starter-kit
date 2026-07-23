@@ -37,7 +37,7 @@ This project has domain-specific skills available. You MUST activate the relevan
 
 ## SCSS & BEM (no Tailwind)
 
-- Styles are compiled with **SCSS** through Vite (`resources/scss/app.scss`). Use **`ddev bun run dev`** / **`ddev bun run build`**.
+- Styles are compiled with **SCSS** through Vite (`resources/scss/app.scss`). Use **`ddev npm run dev`** / **`ddev npm run build`**.
 - **Do not use Tailwind** or other utility-first CSS frameworks in this project.
 - Each UI component gets **BEM** classes in Blade and a dedicated partial: `resources/scss/components/_{block-name}.scss`, registered in `app.scss` via `@use`.
 - Component compatibility and naming discipline: query **Creode Documentation MCP** per `creode-web-components` — do not duplicate those guidelines in the repo.
@@ -62,14 +62,14 @@ This project has domain-specific skills available. You MUST activate the relevan
 
 ## DDEV
 
-This project uses DDEV (`.ddev/`). PHP, database, and Node/bun run inside the web container; the project root in the container is `/var/www/html`.
+This project uses DDEV (`.ddev/`). PHP, database, and Node/npm run inside the web container; the project root in the container is `/var/www/html`.
 
-- **IMPORTANT:** Do not run PHP, Composer, Artisan, Pest, Pint, Rector, PHPStan, or frontend (bun/npm) commands on the host. Always run them through DDEV so tooling matches the project environment.
+- **IMPORTANT:** Do not run PHP, Composer, Artisan, Pest, Pint, Rector, PHPStan, or frontend (npm) commands on the host. Always run them through DDEV so tooling matches the project environment.
 - Run `ddev start` if DDEV is not already running before other commands.
 - **Composer:** `ddev composer install`, `ddev composer require …`, `ddev composer update`
 - **Artisan:** `ddev artisan …` (e.g. `ddev artisan migrate`, `ddev artisan test --compact`)
 - **PHP binaries:** `ddev exec vendor/bin/pest …`, `ddev exec vendor/bin/pint …`, `ddev exec php artisan tinker --execute '…'`
-- **Frontend:** `ddev bun install`, `ddev bun run build`, `ddev bun run dev` (or `ddev exec npm …` when using npm)
+- **Frontend:** `ddev npm install`, `ddev npm run build`, `ddev npm run dev`
 - **Composer scripts** that invoke PHP/Node (e.g. `composer run dev`, `composer run test`): use `ddev composer run …`, not host `composer`.
 - For Laravel debugging, read `storage/logs/laravel.log` — do not rely on host-only log paths outside the project.
 
@@ -91,7 +91,7 @@ This project uses DDEV (`.ddev/`). PHP, database, and Node/bun run inside the we
 
 ## Frontend Bundling
 
-- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `ddev bun run build`, `ddev bun run dev`, or `ddev composer run dev`. Ask them.
+- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `ddev npm run build`, `ddev npm run dev`, or `ddev composer run dev`. Ask them.
 
 ## Documentation Files
 
@@ -187,7 +187,7 @@ This project uses DDEV (`.ddev/`). PHP, database, and Node/bun run inside the we
 
 ## Vite Error
 
-- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `ddev bun run build` or ask the user to run `ddev bun run dev` or `ddev composer run dev`.
+- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `ddev npm run build` or ask the user to run `ddev npm run dev` or `ddev composer run dev`.
 
 === pint/core rules ===
 

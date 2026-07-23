@@ -28,14 +28,14 @@ Modern PHP has evolved into a mature, type-safe language, yet many Laravel proje
 - **Immutable-First Architecture**: Data structures favor immutability to prevent unexpected mutations
 - **Fail-Fast Philosophy**: Errors are caught at compile-time, not runtime
 - **Automated Code Quality**: Pre-configured tools ensure consistent, pristine code across your entire team
-- **Bun-Powered**: Leveraging Bun for blazing-fast dependency management...
+- **Node/npm**: Frontend tooling via DDEV (`ddev npm`)
 - **Just Better Laravel Defaults**: Thanks to **[Essentials](https://github.com/nunomaduro/essentials)** / strict models, auto eager loading, immutable dates, and more...
 
 This isn't just another Laravel boilerplate—it's a statement that PHP applications can and should be built with the same rigor as strongly-typed languages like Rust or TypeScript.
 
 ## Getting Started
 
-> **Requires [PHP 8.4+](https://php.net/releases/)**, [Bun](https://bun.sh) and a code coverage driver like [xdebug](https://xdebug.org/docs/install)**.
+> **Requires [PHP 8.4+](https://php.net/releases/)**, [Node.js](https://nodejs.org/) (npm) and a code coverage driver like [xdebug](https://xdebug.org/docs/install)**.
 
 Create your type-safe Laravel application using [Composer](https://getcomposer.org):
 
@@ -62,8 +62,8 @@ composer dev
 If you plan to use Pest's browser testing capabilities:
 
 ```bash
-bun add playwright
-bunx playwright install
+npm install playwright
+npx playwright install
 ```
 
 ### Verify Installation
@@ -92,7 +92,7 @@ You should see 100% test coverage and all quality checks passing.
 - `composer test` - Runs the complete test suite (type coverage, unit tests, linting, static analysis)
 
 ### Maintenance
-- `composer update:requirements` - Updates all PHP and Bun dependencies to latest versions
+- `composer update:requirements` - Updates all PHP and npm dependencies to latest versions
 
 ## License
 
