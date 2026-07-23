@@ -12,6 +12,11 @@ use_dns_when_possible: true
 composer_version: "2"
 web_environment: []
 corepack_enable: false
+hooks:
+    post-start:
+        # Keep Chromium browsers matched to whatever Playwright version is in
+        # node_modules (Pest always expects the current package + binaries).
+        - exec: bash -c 'if [ -x node_modules/.bin/playwright ]; then node_modules/.bin/playwright install chromium; fi'
 
 web_extra_exposed_ports:
     - name: vite
