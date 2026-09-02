@@ -2,22 +2,18 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vp build",
-        "dev": "vp dev",
-        "lint": "NODE_OPTIONS='--experimental-strip-types' vp fmt resources/",
-        "test:lint": "NODE_OPTIONS='--experimental-strip-types' vp fmt --check resources/"
+        "build": "vite build",
+        "dev": "vite",
+        "lint": "prettier --write \"resources/**/*.{js,css,scss}\"",
+        "test:lint": "prettier --check \"resources/**/*.{js,css,scss}\""
     },
     "devDependencies": {
-        "concurrently": "^10.0.3",
-        "laravel-vite-plugin": "^3.1.0",
-        "npm-check-updates": "^22.2.2",
-        "playwright": "^1.60.0",
-        "sass": "^1.89.2",
-        "vite": "npm:@voidzero-dev/vite-plus-core@0.2.6",
-        "vite-plus": "0.2.6"
-    },
-    "overrides": {
-        "vite": "npm:@voidzero-dev/vite-plus-core@0.2.6",
-        "vitest": "npm:@voidzero-dev/vite-plus-test@0.1.24"
+        "concurrently": "^10.0.5",
+        "laravel-vite-plugin": "^3.2.0",
+        "npm-check-updates": "^23.1.0",
+        "playwright": "^1.62.1",
+        "prettier": "^3.6.2",
+        "sass": "^1.103.1",
+        "vite": "^8.0.0"
     }
 }
