@@ -2,7 +2,9 @@ type: laravel
 docroot: public
 php_version: "8.4"
 webserver_type: apache-fpm
-xdebug_enabled: false
+# Enabled by default so Pest coverage matches CI (XDEBUG_MODE=coverage).
+# Heavier than leaving it off; use `ddev xdebug off` temporarily if you need speed.
+xdebug_enabled: true
 additional_hostnames: []
 additional_fqdns: []
 database:
