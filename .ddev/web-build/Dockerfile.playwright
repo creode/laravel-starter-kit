@@ -1,0 +1,12 @@
+#ddev-silent-no-warn
+# Bake Playwright OS dependencies and Chromium into the web image so Pest
+# browser tests work out of the box. Always use the latest Playwright release —
+# Pest requires a current package + matching browser binaries.
+RUN npm install -g playwright@latest \
+    && npx playwright install-deps chromium
+
+# Browser binaries must be installed as the project user so they land in
+# that user's home directory inside the image (DDEV rebuilds home on restart).
+USER $username
+RUN npx playwright install chromium
+USER root
