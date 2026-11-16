@@ -54,8 +54,10 @@ The site is served at `https://<project-name>.ddev.site`.
 ### Verify Installation
 
 ```bash
-ddev composer test
+ddev composer test:unit && ddev composer test:lint && ddev composer test:types
 ```
+
+`ddev composer test` runs all of these plus the type-coverage check, which currently fails (see below).
 
 Xdebug runs in coverage mode (set in `.ddev/config.yaml`), so Pest has a coverage driver and `ddev` commands stay quiet. To step debug, run a command with `XDEBUG_MODE=debug`.
 
