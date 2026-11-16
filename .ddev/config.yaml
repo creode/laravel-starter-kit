@@ -12,7 +12,13 @@ database:
     version: "11.4"
 use_dns_when_possible: true
 composer_version: "2"
-web_environment: []
+# roave/security-advisories blocks PHP releases with known vulnerabilities, and older DDEV
+# web images ship those releases, so make Composer installs fail. Keep DDEV current.
+ddev_version_constraint: ">= 1.25.5"
+# Coverage mode: gives Pest a coverage driver and stops Xdebug trying to reach a step-debug
+# client on every command. To step debug, run the command with XDEBUG_MODE=debug.
+web_environment:
+    - XDEBUG_MODE=coverage
 corepack_enable: false
 hooks:
     post-start:
