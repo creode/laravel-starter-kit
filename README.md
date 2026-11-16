@@ -57,11 +57,9 @@ The site is served at `https://<project-name>.ddev.site`.
 ddev composer test:unit && ddev composer test:lint && ddev composer test:types
 ```
 
-`ddev composer test` runs all of these plus the type-coverage check, which currently fails (see below).
+`ddev composer test` runs all of these. Type coverage is enforced at 100% by PHPStan.
 
 Xdebug runs in coverage mode (set in `.ddev/config.yaml`), so Pest has a coverage driver and `ddev` commands stay quiet. To step debug, run a command with `XDEBUG_MODE=debug`.
-
-> `composer test:type-coverage` currently fails inside Pest's type-coverage plugin with PHPStan 2.3 (`AnalyserResult::getCollectedData()` is undefined). This is an upstream incompatibility, not a problem with your project.
 
 ### Keeping AI guidance up to date
 
@@ -83,7 +81,6 @@ ddev artisan boost:update
 - `composer test:lint` - Dry-run mode for CI/CD pipelines
 
 ### Testing
-- `composer test:type-coverage` - Ensures 100% type coverage with Pest
 - `composer test:types` - Runs PHPStan at level 9 (maximum strictness)
 - `composer test:unit` - Runs Pest tests with 100% code coverage requirement
 - `composer test` - Runs the complete test suite (type coverage, unit tests, linting, static analysis)
