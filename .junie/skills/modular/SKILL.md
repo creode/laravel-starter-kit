@@ -8,8 +8,6 @@ argument-hint: <module-name> [component-type]
 
 You are helping with a Laravel application that uses `internachi/modular` for modular architecture. Modules live in `app-modules/` and follow Laravel package conventions.
 
-**DDEV:** This project runs in DDEV. Prefix all `composer`, `php artisan`, and `vendor/bin` commands with `ddev` (e.g. `ddev artisan make:module`, `ddev composer update modules/foo`).
-
 ## Module Structure
 
 The structure of `app-modules` mimics a standard Laravel application, where what typically would be found in `app` is found in `src`:
@@ -18,7 +16,6 @@ The structure of `app-modules` mimics a standard Laravel application, where what
 app-modules/
   {module-name}/
     composer.json # PSR-4 autoload, Laravel provider discovery
-
     src/
       Providers/
       Models/
@@ -41,11 +38,11 @@ When asked to create a new module:
 
 1. **Check if `internachi/modular` is installed:**
    ```bash
-   ddev composer show internachi/modular
+   composer show internachi/modular
    ```
    If not installed, install it first:
    ```bash
-   ddev composer require internachi/modular
+   composer require internachi/modular
    ```
 
 2. **Check the modular namespace:**
@@ -56,16 +53,16 @@ When asked to create a new module:
 
 3. **Create the module:**
    ```bash
-   ddev artisan make:module {module-name} --no-interaction
+   php artisan make:module {module-name} --no-interaction
    ```
 
 4. **Register with Composer:**
    ```bash
-   ddev composer update {module-vendor}/{module-name}
+   composer update {module-vendor}/{module-name}
    ```
 5. **Sync modules**
    ```bash
-   ddev artisan modules:sync
+   php artisan modules:sync
    ```
 
 ## Adding Components to a Module
@@ -74,21 +71,21 @@ Use the `--module` flag with Laravel's make commands:
 
 | Component  | Command                                                                              |
 |------------|--------------------------------------------------------------------------------------|
-| Model      | `ddev artisan make:model {Name} --module={module} --no-interaction`                   |
-| Controller | `ddev artisan make:controller {Name}Controller --module={module} --no-interaction`    |
-| Migration  | `ddev artisan make:migration create_{table}_table --module={module} --no-interaction` |
-| Factory    | `ddev artisan make:factory {Name}Factory --module={module} --no-interaction`          |
-| Seeder     | `ddev artisan make:seeder {Name}Seeder --module={module} --no-interaction`            |
-| Request    | `ddev artisan make:request {Name}Request --module={module} --no-interaction`          |
-| Test       | `ddev artisan make:test {Name}Test --module={module} --no-interaction`                |
-| Policy     | `ddev artisan make:policy {Name}Policy --module={module} --no-interaction`            |
-| Event      | `ddev artisan make:event {Name} --module={module} --no-interaction`                   |
-| Listener   | `ddev artisan make:listener {Name} --module={module} --no-interaction`                |
-| Job        | `ddev artisan make:job {Name} --module={module} --no-interaction`                     |
-| Middleware | `ddev artisan make:middleware {Name} --module={module} --no-interaction`              |
-| Resource   | `ddev artisan make:resource {Name}Resource --module={module} --no-interaction`        |
-| Rule       | `ddev artisan make:rule {Name} --module={module} --no-interaction`                    |
-| Observer   | `ddev artisan make:observer {Name}Observer --module={module} --no-interaction`        |
+| Model      | `php artisan make:model {Name} --module={module} --no-interaction`                   |
+| Controller | `php artisan make:controller {Name}Controller --module={module} --no-interaction`    |
+| Migration  | `php artisan make:migration create_{table}_table --module={module} --no-interaction` |
+| Factory    | `php artisan make:factory {Name}Factory --module={module} --no-interaction`          |
+| Seeder     | `php artisan make:seeder {Name}Seeder --module={module} --no-interaction`            |
+| Request    | `php artisan make:request {Name}Request --module={module} --no-interaction`          |
+| Test       | `php artisan make:test {Name}Test --module={module} --no-interaction`                |
+| Policy     | `php artisan make:policy {Name}Policy --module={module} --no-interaction`            |
+| Event      | `php artisan make:event {Name} --module={module} --no-interaction`                   |
+| Listener   | `php artisan make:listener {Name} --module={module} --no-interaction`                |
+| Job        | `php artisan make:job {Name} --module={module} --no-interaction`                     |
+| Middleware | `php artisan make:middleware {Name} --module={module} --no-interaction`              |
+| Resource   | `php artisan make:resource {Name}Resource --module={module} --no-interaction`        |
+| Rule       | `php artisan make:rule {Name} --module={module} --no-interaction`                    |
+| Observer   | `php artisan make:observer {Name}Observer --module={module} --no-interaction`        |
 
 ## Module Conventions
 
@@ -129,7 +126,7 @@ Use the `--module` flag with Laravel's make commands:
 
 - Place in `database/migrations/`
 - Auto-discovered by Laravel's migrator
-- Run with `ddev artisan migrate`
+- Run with `php artisan migrate`
 
 ### Factories
 
@@ -140,7 +137,7 @@ Use the `--module` flag with Laravel's make commands:
 ### Tests
 
 - Place in `tests/Feature/` and `tests/Unit/`
-- Run module tests: `ddev artisan test app-modules/{module-name}/tests`
+- Run module tests: `php artisan test app-modules/{module-name}/tests`
 - All module tests can be run using the `Modules` testsuite configuration that is auto-generated by the `modules:sync` command
 
 ### Cross-Module Dependencies
@@ -152,26 +149,20 @@ Use the `--module` flag with Laravel's make commands:
 ## Available Commands
 
 ```bash
-
 # List all modules
-
-ddev artisan modules:list
+php artisan modules:list
 
 # Sync phpunit.xml and IDE configs
-
-ddev artisan modules:sync
+php artisan modules:sync
 
 # Cache module configs
-
-ddev artisan modules:cache
+php artisan modules:cache
 
 # Clear module cache
-
-ddev artisan modules:clear
+php artisan modules:clear
 
 # Run module seeders
-
-ddev artisan db:seed --module={module-name}
+php artisan db:seed --module={module-name}
 ```
 
 ## Best Practices
@@ -186,4 +177,4 @@ If `$ARGUMENTS` contains:
 
 - Just a module name (e.g., "billing"): Create the module or list what can be added
 - Module + component (e.g., "billing model Invoice"): Create that specific component
-- "list": Show existing modules with `ddev artisan modules:list`
+- "list": Show existing modules with `php artisan modules:list`
