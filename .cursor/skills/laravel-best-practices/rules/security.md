@@ -130,10 +130,10 @@ Do not commit populated environment files or hard-code credentials. Read environ
 
 ## Audit dependencies
 
-Run `composer audit` regularly and in continuous integration. Review findings for exploitability and update or mitigate affected packages promptly.
+Run `ddev composer audit` regularly and in continuous integration. Review findings for exploitability and update or mitigate affected packages promptly.
 
 ```bash
-composer audit
+ddev composer audit
 ```
 
 ## Encrypt sensitive attributes when appropriate

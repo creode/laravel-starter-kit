@@ -1,4 +1,12 @@
 <laravel-boost-guidelines>
+=== .ai/app-modules rules ===
+
+## Modules
+
+- Domain code belongs in `app-modules/{module-name}/`; do not add parallel `app/` trees for module features.
+- Use `ddev artisan make:* --module={module}` for module components, and run `ddev artisan modules:sync` after structural changes.
+- After creating a module, add its `src` directory to the `<source><include>` list in `phpunit.xml`, for example `<directory>app-modules/{module-name}/src</directory>`. Without it, the module's code is left out of the 100% coverage gate. A glob is not used there because it breaks the type-coverage plugin while no module exists.
+
 === .ai/creode-web-components rules ===
 
 ## Adaptable Web Components (Creode)
@@ -21,34 +29,6 @@ This project uses DDEV (`.ddev/`). PHP, database, and Node/npm run inside the we
 - **Frontend:** `ddev npm install`, `ddev npm run build`, `ddev npm run dev`
 - **Composer scripts** that invoke PHP/Node (e.g. `composer run dev`, `composer run test`): use `ddev composer run …`, not host `composer`.
 - For Laravel debugging, read `storage/logs/laravel.log` — do not rely on host-only log paths outside the project.
-
-## Conventions
-
-- You must follow all existing code conventions used in this application. When creating or editing a file, check sibling files for the correct structure, approach, and naming.
-- Use descriptive names for variables and methods. For example, `isRegisteredForDiscounts`, not `discount()`.
-- Check for existing components to reuse before writing a new one.
-
-## Verification Scripts
-
-- Do not create verification scripts or tinker when tests cover that functionality and prove they work. Unit and feature tests are more important.
-
-## Application Structure & Architecture
-
-- Domain code belongs in `app-modules/{module-name}/` (see Modular rules above); do not add parallel `app/` trees for module features.
-- Stick to existing directory structure; don't create new base folders without approval.
-- Do not change the application's dependencies without approval.
-
-## Frontend Bundling
-
-- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `ddev npm run build`, `ddev npm run dev`, or `ddev composer run dev`. Ask them.
-
-## Documentation Files
-
-- You must only create documentation files if explicitly requested by the user.
-
-## Replies
-
-- Be concise in your explanations - focus on what's important rather than explaining obvious details.
 
 === .ai/frontend-styling rules ===
 
@@ -74,7 +54,7 @@ This project uses DDEV (`.ddev/`). PHP, database, and Node/npm run inside the we
 This application is a Laravel application running on PHP 8.4. Always use the APIs that match the installed major version of each package — do not assume a version.
 
 Before relying on a package's API, confirm its installed version:
-- PHP packages: run `composer show --direct` to list direct dependencies with versions, or `composer show <vendor/package>` for a single package.
+- PHP packages: run `ddev composer show --direct` to list direct dependencies with versions, or `ddev composer show <vendor/package>` for a single package.
 - JS packages: check `package.json` for the installed versions.
 
 ## Skills Activation
@@ -98,7 +78,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 ## Frontend Bundling
 
-- If a frontend change doesn't show in the UI or you get a "Unable to locate file in Vite manifest" error, run `npm run build` or ask the user to run `npm run dev` or `composer run dev`.
+- If a frontend change doesn't show in the UI or you get a "Unable to locate file in Vite manifest" error, run `ddev npm run build` or ask the user to run `ddev npm run dev` or `ddev composer run dev`.
 
 ## Documentation Files
 
@@ -136,15 +116,15 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 ## Artisan
 
-- Run Artisan commands directly via the command line (e.g., `php artisan route:list`). Use `php artisan list` to discover available commands and `php artisan [command] --help` to check parameters.
-- Inspect routes with `php artisan route:list`. Filter with: `--method=GET`, `--name=users`, `--path=api`, `--except-vendor`, `--only-vendor`.
-- Read configuration values using dot notation: `php artisan config:show app.name`, `php artisan config:show database.default`. Or read config files directly from the `config/` directory.
+- Run Artisan commands directly via the command line (e.g., `ddev php artisan route:list`). Use `ddev php artisan list` to discover available commands and `ddev php artisan [command] --help` to check parameters.
+- Inspect routes with `ddev php artisan route:list`. Filter with: `--method=GET`, `--name=users`, `--path=api`, `--except-vendor`, `--only-vendor`.
+- Read configuration values using dot notation: `ddev php artisan config:show app.name`, `ddev php artisan config:show database.default`. Or read config files directly from the `config/` directory.
 
 ## Tinker
 
 - Execute PHP in app context for debugging and testing code. Do not create models without user approval, prefer tests with factories instead. Prefer existing Artisan commands over custom tinker code.
-- Always use single quotes to prevent shell expansion: `php artisan tinker --execute 'Your::code();'`
-  - Double quotes for PHP strings inside: `php artisan tinker --execute 'User::where("active", true)->count();'`
+- Always use single quotes to prevent shell expansion: `ddev php artisan tinker --execute 'Your::code();'`
+  - Double quotes for PHP strings inside: `ddev php artisan tinker --execute 'User::where("active", true)->count();'`
 
 === php rules ===
 
@@ -177,13 +157,13 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 # Do Things the Laravel Way
 
-- Use `php artisan make:` commands to create new files (i.e. migrations, controllers, models, etc.). You can list available Artisan commands using `php artisan list` and check their parameters with `php artisan [command] --help`.
-- If you're creating a generic PHP class, use `php artisan make:class`.
+- Use `ddev php artisan make:` commands to create new files (i.e. migrations, controllers, models, etc.). You can list available Artisan commands using `ddev php artisan list` and check their parameters with `ddev php artisan [command] --help`.
+- If you're creating a generic PHP class, use `ddev php artisan make:class`.
 - Pass `--no-interaction` to all Artisan commands to ensure they work without user input. You should also pass the correct `--options` to ensure correct behavior.
 
 ### Model Creation
 
-- When creating new models, create useful factories and seeders for them too. Ask the user if they need any other things, using `php artisan make:model --help` to check the available options.
+- When creating new models, create useful factories and seeders for them too. Ask the user if they need any other things, using `ddev php artisan make:model --help` to check the available options.
 
 ## APIs & Eloquent Resources
 
@@ -197,29 +177,29 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 - When creating models for tests, use the factories for the models. Check if the factory has custom states that can be used before manually setting up the model.
 - Faker: Use methods such as `$this->faker->word()` or `fake()->randomDigit()`. Follow existing conventions whether to use `$this->faker` or `fake()`.
-- When creating tests, make use of `php artisan make:test [options] {name}` to create a feature test, and pass `--unit` to create a unit test. Most tests should be feature tests.
+- When creating tests, make use of `ddev php artisan make:test [options] {name}` to create a feature test, and pass `--unit` to create a unit test. Most tests should be feature tests.
 
 === pint/core rules ===
 
 # Laravel Pint Code Formatter
 
-- If you have modified any PHP files, you must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
-- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
+- If you have modified any PHP files, you must run `ddev exec vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
+- Do not run `ddev exec vendor/bin/pint --test --format agent`, simply run `ddev exec vendor/bin/pint --format agent` to fix any formatting issues.
 
 === pest/core rules ===
 
 # Pest
 
-- This project uses Pest. Create tests with `php artisan make:test --pest {name}`.
+- This project uses Pest. Create tests with `ddev php artisan make:test --pest {name}`.
 - Do not include the test suite directory in `{name}`. Use `SomeFeatureTest`, not `Feature/SomeFeatureTest`.
 - Read the `testing-best-practices` skill for guidance on coverage, naming, structure, dependency isolation, and review.
 - Do not delete tests or test files without approval. They are part of the application.
 
 ## Running Tests
 
-- Run the narrowest set of tests that covers the change. Pass a file path or `--filter=testName` to `php artisan test --compact`.
+- Run the narrowest set of tests that covers the change. Pass a file path or `--filter=testName` to `ddev php artisan test --compact`.
 - Rerun a test after each change to it.
-- Run `vendor/bin/pest` to call the test runner directly. It accepts the same file path and `--filter=testName` arguments.
+- Run `ddev exec vendor/bin/pest` to call the test runner directly. It accepts the same file path and `--filter=testName` arguments.
 
 === internachi/modular/core rules ===
 

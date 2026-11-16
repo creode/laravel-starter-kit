@@ -2,11 +2,11 @@
 
 ## Generate migrations with Artisan
 
-Use `php artisan make:migration` to generate the timestamped filename and migration structure.
+Use `ddev php artisan make:migration` to generate the timestamped filename and migration structure.
 
 ```bash
-php artisan make:migration create_posts_table
-php artisan make:migration add_slug_to_posts_table
+ddev php artisan make:migration create_posts_table
+ddev php artisan make:migration add_slug_to_posts_table
 ```
 
 ## Define foreign-key constraints deliberately
