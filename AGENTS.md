@@ -45,6 +45,12 @@ This project uses DDEV (`.ddev/`). PHP, database, and Node/npm run inside the we
 
 - **PHP runtime:** Target **8.4** everywhere (DDEV, Composer, production). Hosting does not support 8.5 yet — do not adopt 8.5-only language features or raise the minimum above 8.4.
 
+=== .ai/replies rules ===
+
+## Replies
+
+- Be concise in your explanations - focus on what's important rather than explaining obvious details.
+
 === foundation rules ===
 
 # Laravel Boost Guidelines
