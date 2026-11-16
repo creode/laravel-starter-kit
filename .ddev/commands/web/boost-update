@@ -1,0 +1,9 @@
+#!/bin/bash
+
+## Description: Regenerate the Laravel Boost guidance with DDEV commands written into it
+## Usage: boost-update [flags]
+## Example: ddev boost-update --no-discover
+
+# The php path is only set for this run: Boost also uses it to start its MCP tools, where
+# "ddev php" would fail inside the container. See config/boost.php.
+BOOST_PHP_EXECUTABLE_PATH='ddev php' php artisan boost:update "$@"
