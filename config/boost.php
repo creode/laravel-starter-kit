@@ -14,6 +14,10 @@ declare(strict_types=1);
  * BOOST_PHP_EXECUTABLE_PATH only while the guidance is generated.
  */
 return [
+    // Boost otherwise decides by counting the output of `artisan test --list-tests`, which varies
+    // between environments and can make the Test Enforcement section appear and disappear.
+    'enforce_tests' => true,
+
     'executable_paths' => [
         'php' => env('BOOST_PHP_EXECUTABLE_PATH'),
         'composer' => 'ddev composer',
